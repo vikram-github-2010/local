@@ -24,17 +24,28 @@
                 </ul>
             </div>
         @endif
-
+        
         <div class="form-group">
-            <label>Add Tweet Text:</label>
+            <label>Title</label>:</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+        
+         <div class="form-group">
+            <label>check Tweet</label>:</label>
+            <input type="text" name="check-tweet" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label>Add Keywords</label>
             <textarea class="form-control" name="tweet"></textarea>
         </div>
+        
+        <!--<div class="form-group">-->
+        <!--    <label>Add Multiple Images:</label>-->
+        <!--    <input type="file" name="images[]" multiple class="form-control">-->
+        <!--</div>-->
         <div class="form-group">
-            <label>Add Multiple Images:</label>
-            <input type="file" name="images[]" multiple class="form-control">
-        </div>
-        <div class="form-group">
-            <button class="btn btn-success">Add New Tweet</button>
+            <button class="btn btn-success">Verify Tweet</button>
         </div>
     </form>
 
