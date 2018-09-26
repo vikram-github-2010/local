@@ -45,26 +45,32 @@ class TwitterController extends Controller
              
              //get last content from url
              $ids = substr($getData, strrpos($getData, '/') + 1);
+             
+             
+             $a= Twitter::getTweet($ids);
+             print_r($a);
+             
+             
            
             //get twitter id
-             $twiter =  Twitter::getUserTimeline(['count' => 20, 'format' => 'array']);
+        //      $twiter =  Twitter::getUserTimeline(['count' => 20, 'format' => 'array']);
     	
-          foreach ($twiter as $key=> $value) {
+        //   foreach ($twiter as $key=> $value) {
          
-             $a= $value['id'];
+        //      $a= $value['id'];
              
-             // print_r($a)."<br/>";
+        //      // print_r($a)."<br/>";
              
-             if($ids==$a){
+        //      if($ids==$a){
                  
-                 return $message = "This url related post";
+        //          return $message = "This url related post";
                  
-             }
+        //      }
              
-        }
+        // }
         
         //if twitter id not matchs
-        return "this is not related";
+     //   return "this is not related";
          
           
 
