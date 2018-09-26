@@ -8,6 +8,8 @@
                     {{$value['id']}}
                     
                 @endforeach
+                
+                <?php //print_r($twiter); ?>
             </div>
    
         </div>

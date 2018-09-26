@@ -17,11 +17,11 @@ class TwitterController extends Controller
     
     {
         //get all twitter details
-    	$data = Twitter::getUserTimeline(['count' => 20, 'format' => 'array']);
+    	return $data = Twitter::getUserTimeline(['count' => 1, 'format' => 'array']);
     	
      	
     	//var_dump($data);
-    	return view('twitter',compact('data'));
+    //	return view('twitter',compact('data'));
     }
 
     /**
@@ -40,60 +40,33 @@ class TwitterController extends Controller
         		'check-tweet'=>'required'
         	]);
             
-            //get form check id
-             $getData= $request['check-tweet'];
-             
-             //get last content from url
-             $ids = substr($getData, strrpos($getData, '/') + 1);
-             
-             
-             $a= Twitter::getTweet($ids);
-             print_r($a);
-             
-             
-           
-            //get twitter id
-        //      $twiter =  Twitter::getUserTimeline(['count' => 20, 'format' => 'array']);
-    	
-        //   foreach ($twiter as $key=> $value) {
-         
-        //      $a= $value['id'];
-             
-        //      // print_r($a)."<br/>";
-             
-        //      if($ids==$a){
+            //get form filled url
+            $getData= $request['check-tweet'];
+            
+            $array = get_headers($getData);
+            $string = $array[0];
+            if(strpos($string,"200"))
+              {
+                //echo 'url exists';
+                
+                //get id from url
+                $ids = substr($getData, strrpos($getData, '/') + 1);
                  
-        //          return $message = "This url related post";
-                 
-        //      }
-             
-        // }
-        
-        //if twitter id not matchs
-     //   return "this is not related";
-         
-          
-
-           
-               
-    // 	$newTwitte = ['status' => $request->tweet];
-
-    	
-    // 	if(!empty($request->images)){
-    // 		foreach ($request->images as $key => $value) {
-    // 			$uploaded_media = Twitter::uploadMedia(['media' => File::get($value->getRealPath())]);
-    // 			if(!empty($uploaded_media)){
-    //                 $newTwitte['media_ids'][$uploaded_media->media_id_string] = $uploaded_media->media_id_string;
-    //             }
-    // 		}
-    // 	}
-
-    // 	$twitter = Twitter::postTweet($newTwitte);
-    
-    
-    
-       // return view('test',compact('twiter','ids'));
-       
+                //get details from id
+                $twiter= Twitter::getTweet($ids);
+                print_r($twiter);
+                
+                //return view('test',compact('twiter'));
+              }
+              else
+              {
+                echo 'url does not exist';
+                
+              }
+              
+            
+            
+              
        
        
     	
