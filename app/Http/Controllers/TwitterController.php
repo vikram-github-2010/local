@@ -43,11 +43,11 @@ class TwitterController extends Controller
             //get form filled url
             $getData= $request['check-tweet'];
             
+            //validate url exists
             $array = get_headers($getData);
             $string = $array[0];
             if(strpos($string,"200"))
               {
-                //echo 'url exists';
                 
                 //get id from url
                 $ids = substr($getData, strrpos($getData, '/') + 1);
@@ -55,9 +55,16 @@ class TwitterController extends Controller
                 //get details from id
                 $data= Twitter::getTweet($ids);
                 //print_r($data);
-               
-               $arrays = json_decode(json_encode($data), true);
                 
+                //get retweet related to id
+                 $retweet= Twitter::getRts($ids);
+                
+                // $retwitter = json_decode(json_encode($retweet), true);
+               
+                 $arrays = json_decode(json_encode($data), true);
+                
+                 //return view('test_retweet',compact('retwitter'));
+                 
                  return view('test',compact('arrays'));
               }
               else
