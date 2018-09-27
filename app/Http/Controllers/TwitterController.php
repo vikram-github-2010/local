@@ -17,11 +17,11 @@ class TwitterController extends Controller
     
     {
         //get all twitter details
-    	return $data = Twitter::getUserTimeline(['count' => 1, 'format' => 'array']);
+    	  $data = Twitter::getUserTimeline(['count' => 1, 'format' => 'array']);
     	
      	
     	//var_dump($data);
-    //	return view('twitter',compact('data'));
+    	return view('twitter',compact('data'));
     }
 
     /**
@@ -53,10 +53,12 @@ class TwitterController extends Controller
                 $ids = substr($getData, strrpos($getData, '/') + 1);
                  
                 //get details from id
-                $twiter= Twitter::getTweet($ids);
-                print_r($twiter);
+                $data= Twitter::getTweet($ids);
+                //print_r($data);
+               
+               $arrays = json_decode(json_encode($data), true);
                 
-                //return view('test',compact('twiter'));
+                 return view('test',compact('arrays'));
               }
               else
               {
