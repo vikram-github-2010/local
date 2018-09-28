@@ -59,13 +59,14 @@ class TwitterController extends Controller
                 //get retweet related to id
                  $retweet= Twitter::getRts($ids);
                 
-                // $retwitter = json_decode(json_encode($retweet), true);
+                 //$retwitter = json_decode(json_encode($retweet), true);
                
-                 $arrays = json_decode(json_encode($data), true);
-                
-                 //return view('test_retweet',compact('retwitter'));
+                $arrays = json_decode(json_encode($data), true);
+                //return $arrays['entities']['urls'][0]['expanded_url'];
+               
+                // return view('test_retweet',compact('retwitter'));
                  
-                 return view('test',compact('arrays'));
+                return view('test',compact('arrays'));
               }
               else
               {
