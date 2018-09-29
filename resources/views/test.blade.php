@@ -6,7 +6,11 @@
         <thead>
             <tr>
                 <th>Twitter Id</th>
+                <th>Twitter Id</th>
+                <th>Author</th>
+                <th>screen_name</th>
                 <th>Message</th>
+                <th>Location</th>
                 <th>Favorite</th>
                 <th>Retweet</th>
             </tr>
@@ -15,7 +19,11 @@
             @if(!empty($arrays))
                     <tr>
                         <td>{{ $arrays['id'] }}</td>
+                        <td>{{ $arrays['created_at'] }}</td>
+                        <td>{{$arrays['user']['name']}}</td>
+                        <td>{{$arrays['user']['screen_name']}}</td>
                         <td>{{ $arrays['text'] }}</td>
+                        <td>{{$arrays['user']['location']}}</td>
                         <td>{{ $arrays['favorite_count'] }}</td>
                         <td>{{ $arrays['retweet_count'] }}</td>
                     </tr>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Abraham\TwitterOAuth\TwitterOAuth;
 use Illuminate\Http\Request;
 use Twitter;
 use File;
@@ -30,8 +30,13 @@ class TwitterController extends Controller
      * @return void
      */
     public function tweet(Request $request)
-    {
+    {   
         
+        $TWITTER_CONSUMER_KEY='EZ8oQF860D40di1fuPHKvBZBJ';
+        $TWITTER_CONSUMER_SECRET='h39MhoIvyDqRYbsKesHSm3XxZGtWkF4m0ihkseUABCc60EVGCk';
+        $TWITTER_ACCESS_TOKEN='1044126146974015490-8kRIlKjI30nWHPvPibprpts6DK7xXf';
+        $TWITTER_ACCESS_TOKEN_SECRET='3s169Io7YA1yHPL17wt9ZuKDq8Ii27mXVpXGCxpICjnWh';
+            
          // dd($request);
          
     	$this->validate($request, [
@@ -61,11 +66,17 @@ class TwitterController extends Controller
                 
                 // $retwitter = json_decode(json_encode($retweet), true);
                
-                 $arrays = json_decode(json_encode($data), true);
+                $arrays = json_decode(json_encode($data), true);
+                $location = $arrays['user']['location'];
                 
-                 //return view('test_retweet',compact('retwitter'));
+                
+                $retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWITTER_ACCESS_TOKEN,$TWITTER_ACCESS_TOKEN_SECRET);
+                $dataTweet=$retweet->get("search/tweets", ["q" => "$location"]);
+                print_r($dataTweet);
+        
+                //return view('test_retweet',compact('dataTweet'));
                  
-                 return view('test',compact('arrays'));
+                // return view('test',compact('arrays'));
               }
               else
               {
