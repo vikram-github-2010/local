@@ -59,24 +59,30 @@ class TwitterController extends Controller
                  
                 //get details from id
                 $data= Twitter::getTweet($ids);
-                //print_r($data);
                 
-                //get retweet related to id
-                 $retweet= Twitter::getRts($ids);
-                
-                // $retwitter = json_decode(json_encode($retweet), true);
-               
+               //convert into arrays getTweet function
                 $arrays = json_decode(json_encode($data), true);
+                
+                //get location from arrays
                 $location = $arrays['user']['location'];
-                
-                
+    
+                //use Oauth Api create Object
                 $retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWITTER_ACCESS_TOKEN,$TWITTER_ACCESS_TOKEN_SECRET);
+                
+                //query to search location Tweet
                 $dataTweet=$retweet->get("search/tweets", ["q" => "$location"]);
                 print_r($dataTweet);
+                
+                // $a= $dataTweet->statuses;
+                // print_r($a);
+                
+                
+                
+                //$dataTweet->statuses->created_at;
         
                 //return view('test_retweet',compact('dataTweet'));
                  
-                // return view('test',compact('arrays'));
+               // return view('test',compact('arrays'));
               }
               else
               {
