@@ -32,11 +32,6 @@ class TwitterController extends Controller
     public function tweet(Request $request)
     {   
         
-        $TWITTER_CONSUMER_KEY='EZ8oQF860D40di1fuPHKvBZBJ';
-        $TWITTER_CONSUMER_SECRET='h39MhoIvyDqRYbsKesHSm3XxZGtWkF4m0ihkseUABCc60EVGCk';
-        $TWITTER_ACCESS_TOKEN='1044126146974015490-8kRIlKjI30nWHPvPibprpts6DK7xXf';
-        $TWITTER_ACCESS_TOKEN_SECRET='3s169Io7YA1yHPL17wt9ZuKDq8Ii27mXVpXGCxpICjnWh';
-            
          // dd($request);
          
     	$this->validate($request, [
@@ -65,22 +60,12 @@ class TwitterController extends Controller
                 
                 //get location from arrays
                 $location = $arrays['user']['location'];
-    
-                //use Oauth Api create Object
-                $retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWITTER_ACCESS_TOKEN,$TWITTER_ACCESS_TOKEN_SECRET);
                 
-                //query to search location Tweet
-                $dataTweet=$retweet->get("search/tweets", ["q" => "$location"]);
-                print_r($dataTweet);
+                //get tweet from location
+                $tweets = Twitter::getSearch(array('q' => $location, 'count' => 100, 'format' => 'array'));
                 
-                // $a= $dataTweet->statuses;
-                // print_r($a);
-                
-                
-                
-                //$dataTweet->statuses->created_at;
-        
-                //return view('test_retweet',compact('dataTweet'));
+                             
+                return view('test_retweet',compact('tweets'));
                  
                // return view('test',compact('arrays'));
               }
