@@ -79,4 +79,7 @@ Route::get('/test', 'TestController@store');
 
 
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
+Route::get('twitterUserTimeLineSecond', 'TwitterSecondController@twitterUserTimeLine');
+
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
+Route::post('tweetsecond', ['as'=>'postsecond.tweetsecond','uses'=>'TwitterSecondController@tweet']);

@@ -10,15 +10,15 @@ use Abraham\TwitterOAuth\TwitterOAuth;
     $TWITTER_ACCESS_TOKEN_SECRET='3s169Io7YA1yHPL17wt9ZuKDq8Ii27mXVpXGCxpICjnWh';
     
     
-    $retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWITTER_ACCESS_TOKEN,$TWITTER_ACCESS_TOKEN_SECRET);
-    $data1=$retweet->get("search/tweets", ["q" => "Mohali,India"]);
+$retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWITTER_ACCESS_TOKEN,$TWITTER_ACCESS_TOKEN_SECRET);
+  $data1=$retweet->get("search/tweets", ["q" => "Mohali,India"]);
     //convert into arrays getTweet function
-    $arrays = json_decode(json_encode($data1), true);
+  $arrays = json_decode(json_encode($data1), true);
    echo"<pre>";print_r($arrays);
    
     
     
     
-        
+    
         
 ?>

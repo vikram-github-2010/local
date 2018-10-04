@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Twitter;
 use File;
 
-class TwitterController extends Controller
+class TwitterSecondController extends Controller
 {
 	/**
      * Create a new controller instance.
@@ -21,7 +21,7 @@ class TwitterController extends Controller
     	
      	
     	//var_dump($data);
-    	return view('twitter',compact('data'));
+    	return view('twittersecond',compact('data'));
     }
 
     /**
@@ -57,15 +57,9 @@ class TwitterController extends Controller
                 
                //convert into arrays getTweet function
                 $arrays = json_decode(json_encode($data), true);
-                
-                //get location from arrays
-                $location = $arrays['user']['location'];
-                
-                //get tweet from location
-                $tweets = Twitter::getSearch(array('q' => $location, 'count' => 100, 'format' => 'array'));
-                
-               return view('test_retweet',compact('tweets'));
+            
                  
+                return view('test',compact('arrays'));
               }
               else
               {
