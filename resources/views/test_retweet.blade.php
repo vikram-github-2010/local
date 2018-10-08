@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-            
+         <!--<div id="tweet_div"></div> --> 
         <table class="table table-bordered">
         <thead>
             <tr>

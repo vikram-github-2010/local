@@ -1,0 +1,9 @@
+body {
+  background: white;
+}
+
+.image img {
+  height: 150px !important;
+  width: 200px !important;
+}
+

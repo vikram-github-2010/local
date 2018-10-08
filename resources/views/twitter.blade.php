@@ -48,7 +48,7 @@
             <button class="btn btn-success">Verify Tweet</button>
         </div>
     </form>
-
+   
     <table class="table table-bordered">
         <thead>
             <tr>

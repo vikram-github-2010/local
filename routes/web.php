@@ -27,7 +27,7 @@ Route::get('/download/{id}','FileController@add');
 
 Route::get('/notify', function(){
     
-    $user = User::find(2);
+    $user = User::find(1);
     
     $user->notify(new InvoicePaid("A new user has visited on your application."));
  

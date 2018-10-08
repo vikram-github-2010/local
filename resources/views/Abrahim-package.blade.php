@@ -14,6 +14,7 @@ $retweet = new TwitterOAuth($TWITTER_CONSUMER_KEY,$TWITTER_CONSUMER_SECRET,$TWIT
   $data1=$retweet->get("search/tweets", ["q" => "Mohali,India"]);
     //convert into arrays getTweet function
   $arrays = json_decode(json_encode($data1), true);
+  //var_dump($arrays);
    echo"<pre>";print_r($arrays);
    
     
