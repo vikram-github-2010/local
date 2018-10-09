@@ -76,7 +76,7 @@ Route::get('subs',function(){
 
 
 Route::get('/test', 'TestController@store');
-
+Route::get('/replies', 'ApiControllerTest@get_conversation');
 
 Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
 Route::get('twitterUserTimeLineSecond', 'TwitterSecondController@twitterUserTimeLine');
